@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>Login</title>
+		
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/style.css">
+		
+	</head>
+
+	<body background="img/banner-bg.jpg">
+		<font color="#ffffff">
+		<hr>
+		<div class="header">
+			<h1 class="text-center">SISTEM INFORMASI KEPEGAWAIAN<br> SMA NEGERI 4 KUPANG </h1>
+		</div>
+		<hr>
+		<br>
+		<br>
+		<div class="col-sm-3 col-sm-offset-4">
+		<form action="login.php" method="post" onSubmit="return validasi()" class="form-horizontal" role="form">
+			<br>
+			<div class="form-group">
+				<div class="col-sm-12">
+					<input type="text" class="form-control" id="username" name="username" placeholder="User Name">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-12">
+					<input type="password" id="password-field" name="password" class="form-control" placeholder="Password">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-12">
+					<button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
+				</div>
+			</div>
+		</form>
+		<div>
+		</font>
+
+		<div class="modal fade bs-example-modal-sm" id="infoku" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"> 
+		  <div class="modal-dialog modal-sm " role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="gridSystemModalLabel">Warning</h4>
+		    </div>
+		    <div class="modal-body">
+		        <p>Username dan Password wajib diisi!</p>
+		    </div>
+		    </div>
+		  </div>
+		</div>
+		
+		<div class="modal fade bs-example-modal-sm" id="salah" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"> 
+		  <div class="modal-dialog modal-sm " role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="gridSystemModalLabel">Warning</h4>
+		    </div>
+		    <div class="modal-body">
+		        <p>Username atau Password Salah!<br> mohon diteliti</p>
+		    </div>
+		    </div>
+		  </div>
+		</div>
+
+		<div class="modal fade bs-example-modal-sm" id="logindulu" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"> 
+		  <div class="modal-dialog modal-sm " role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="gridSystemModalLabel">Warning</h4>
+		    </div>
+		    <div class="modal-body">
+		        <p>Session tidak ditemukan<br> anda harus login terlebih dahulu</p>
+		    </div>
+		    </div>
+		  </div>
+		</div>
+
+		<script src="js/jquery-3.3.1.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			function validasi() {
+				var username = document.getElementById("username").value;
+				var password = document.getElementById("password").value;		
+				if (username != "" && password!="") {
+					return true;
+				}else{
+					$('#infoku').modal('show');
+					// alert('Username dan Password harus di isi !');
+					return false;
+				}
+			}		 
+		</script>
+		<script type='text/JavaScript'>
+			//ambil URL
+			var url = window.location.toString();
+			//ambil bagian parameternya
+			url.match(/\?(.+)$/);
+			var params = RegExp.$1;
+			if (params=="gagal")$('#salah').modal('show');
+		</script>
+		<script type='text/JavaScript'>
+			//ambil URL
+			var url = window.location.toString();
+			//ambil bagian parameternya
+			url.match(/\?(.+)$/);
+			var params = RegExp.$1;
+			if (params=="logindulu")$('#logindulu').modal('show');
+		</script>
+		<script type="text/javascript">
+		 $("#password").password('toggle');
+		</script>
+		
+
+	</body>	
+</html>
